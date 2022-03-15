@@ -6,7 +6,7 @@ by adding a step to your workflow.
 ↓ Use this action before you need access to your Tailnet in your workflow ↓
 ```yaml
   - name: Run Tailscale
-    uses: tailscale/github-action@v2
+    uses: m-bers/tailscale-action@v2
       with:
         apikey: ${{ secrets.TAILSCALE_APIKEY }}
         tailnet: ${{ secrets.TAILSCALE_TAILNET }}
@@ -20,7 +20,7 @@ Subsequent steps in the Action can then access nodes in your Tailnet.
 ```yaml
   - name: Remove Tailscale
     if: always()
-    uses: tailscale/github-action@v2
+    uses: m-bers/tailscale-action@v2
       with:
         action: down
         apikey: ${{ secrets.TAILSCALE_APIKEY }}
@@ -42,6 +42,4 @@ your workflow if not using automatic ephemeral auth.
 ----
 
 ### Maintainer's Notes
-This repository is provided and maintained by Tailscale. The CI script in this
-repository uses an ephemeral authkey generated for the Tailnet owned by
-TailscaleGitHubActionBot.github and stored as a Secret as described above.
+This repository is NOT provided and maintained by or otherwise affiliated with Tailscale. It also uses an API key that are very powerful and can be used to make arbitrary changes to machines in your tailnet if an unauthorized user gets a hold of the apikey. Use at your own risk.
